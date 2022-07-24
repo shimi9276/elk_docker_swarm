@@ -133,7 +133,6 @@ services:
       - MONITORING_ENABLED=false
       - CONFIG_PATH=.
     volumes:
-      # - test:/usr/share/config
       - logstash:/usr/share/logstash/pipeline
     ports:
       - "12201:12201/udp"
@@ -160,7 +159,6 @@ volumes:
     driver: local
   logstash:
     driver: local
-  # test:
-  #   driver: local
+
   
   

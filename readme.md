@@ -26,4 +26,6 @@ Allocate 8 gigabytes per machine as elastic is memory intensive.
 1. In the swarm-manager machine, set the `.env` file variables according to your pleasing, then run `export $(cat .env | xargs)`. Note that the replica variable should eqaul the amount of workers in the swarm cluster
 2. run `docker stack deploy -c <(docker-compose config) $DEPLOYMENT_NAME`. Note that if may take some time for the stack to be up and running, give it a few minutes.
 3. Run `docker service ls` to see the stack status.
-4. Once the stack is up 
+4. Get the IP of one of the workers and head to port 5601
+
+You should now be able to see Kibana and your logs!
