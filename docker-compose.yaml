@@ -131,8 +131,10 @@ services:
       - XPACK_MONITORING_ELASTICSEARCH_USERNAME=elastic
       - XPACK_MONITORING_ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
       - MONITORING_ENABLED=false
+      - CONFIG_PATH=.
     volumes:
-      - logstash:/usr/share/logstash/pipeline/
+      # - test:/usr/share/config
+      - logstash:/usr/share/logstash/pipeline
     ports:
       - "12201:12201/udp"
       - 9600:9600
@@ -158,5 +160,7 @@ volumes:
     driver: local
   logstash:
     driver: local
+  # test:
+  #   driver: local
   
   
