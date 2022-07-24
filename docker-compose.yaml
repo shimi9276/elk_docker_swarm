@@ -131,7 +131,6 @@ services:
       - XPACK_MONITORING_ELASTICSEARCH_USERNAME=elastic
       - XPACK_MONITORING_ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
       - MONITORING_ENABLED=false
-      - CONFIG_PATH=.
     volumes:
       - logstash:/usr/share/logstash/pipeline
     ports:
