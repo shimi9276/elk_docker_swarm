@@ -102,7 +102,7 @@ services:
       - ${KIBANA_PORT}:5601
     environment:
       - SERVERNAME=kibana
-      - ELASTICSEARCH_HOSTS=http://${DEPLOYMENT_NAME}_es01:9200
+      - ELASTICSEARCH_HOSTS=["http://${DEPLOYMENT_NAME}_es01:9200","http://${DEPLOYMENT_NAME}_es02:9200","http://${DEPLOYMENT_NAME}_es03:9200"]
       - ELASTICSEARCH_USERNAME=kibana_system
       - ELASTICSEARCH_PASSWORD=${KIBANA_PASSWORD}
     deploy:
@@ -127,12 +127,12 @@ services:
   logstash:
     image: docker.elastic.co/logstash/logstash:${STACK_VERSION}
     environment:
-      - XPACK_MONITORING_ELASTICSEARCH_URL=["http:///es01:9200", "http:///es02:9200", "http:///es03:9200"]
+      - XPACK_MONITORING_ELASTICSEARCH_URL=["http://es01:9200", "http://es02:9200", "http://es03:9200"]
       - XPACK_MONITORING_ELASTICSEARCH_USERNAME=elastic
       - XPACK_MONITORING_ELASTICSEARCH_PASSWORD=${ELASTIC_PASSWORD}
       - MONITORING_ENABLED=false
     volumes:
-      - logstash:/usr/share/logstash/pipeline
+      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
     ports:
       - "12201:12201/udp"
       - 9600:9600
@@ -155,8 +155,6 @@ volumes:
   esdata03:
     driver: local
   kibanadata:
-    driver: local
-  logstash:
     driver: local
 
   
