@@ -4,7 +4,7 @@
 
 This specific guide is macOS M1 based. 
 
-### Create the swarm 
+### Create and initialize the VMs
 
 1. Install UTM from [here](https://mac.getutm.app/)
 2. Download Ubuntu server for [**ARM**](https://ubuntu.com/download/server/arm)
@@ -18,8 +18,8 @@ Allocate 8 gigabytes per machine as elastic is memory intensive.
 ### Create the swarm
 
 1. In the swarm-manager machine run `docker swarm init`. The output should include a join command with a token. Copy the command and paste in the other machines. Note you may need to add `sudo` to the command.
-2. Run `docker node ls` and verify all the workers have been added.
-3. Run `./ingress`. This script resets the default ingress network (this is done as a result of a bug, see [here](https://github.com/deviantony/docker-elk/issues/455]))
+2. In the swarm-manager machine run `docker node ls` and verify all the workers have been added.
+3. In the swarm-manager machine run `./ingress`. This script resets the default ingress network (this is done as a result of a bug, see [here](https://github.com/deviantony/docker-elk/issues/455]))
 
 ### Deploy the stack
 
